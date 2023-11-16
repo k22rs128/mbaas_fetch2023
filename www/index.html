@@ -15,16 +15,27 @@
         // 利用するデータベースを指定（存在しなければ生成）
         let TestClass = ncmb.DataStore("FetchTest");
 
+        function fetch() {
+            let TestClass = ncmb.DataStore("FetchTest");
+            TestClass.fetch()
+                .then(function(results) {
+                    let data = results.get("text");
+                    let update = results.get("updateDate");
+                    $("#message").html(data + ":" + update);
+                })
+        }
+
         function register() {
             // 登録するレコードを用意
             let testRecord = new TestClass();
             let key = "text";
             let value = $("#value").val();
-            $(function(){ 
-                $("#btnA").click(function(e){ 
-                    btnAClick(e); })
-                     })
-            // レコードのフィールドと値を設定
+            $(function() {
+                    $("#btnA").click(function(e) {
+                        btnAClick(e);
+                    })
+                })
+                // レコードのフィールドと値を設定
             testRecord.set(key, value);
             // レコードをデータベースに登録
             testRecord.save()
@@ -34,6 +45,8 @@
                 .catch(function(err) {
                     $("#message").html("Failed to create new object, with error code: " + JSON.stringify(err));
                 })
+
+
         }
     </script>
 </head>
