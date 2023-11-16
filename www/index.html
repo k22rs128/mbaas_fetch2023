@@ -20,6 +20,10 @@
             let testRecord = new TestClass();
             let key = "text";
             let value = $("#value").val();
+            $(function(){ 
+                $("#btnA").click(function(e){ 
+                    btnAClick(e); })
+                     })
             // レコードのフィールドと値を設定
             testRecord.set(key, value);
             // レコードをデータベースに登録
@@ -42,7 +46,7 @@
     </div>
     <div id="button">
         <button id="btnA" class="btn" onclick="register()">Register</button>
-        <button id="btnB" class="btn" onclick="Fetch()">Fetch</button>
+        <button id="btnB" class="btn" onclick="fetch()">Fetch</button>
     </div>
     <div id="message">message area</div>
 </body>
